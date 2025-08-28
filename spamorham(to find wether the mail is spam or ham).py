@@ -132,7 +132,7 @@ Not Spam: 0.002
 '''
 
 def readFiles(path):
-    for root, dirnames, filenames in os.walk(path): #
+    for root, dirnames, filenames in os.walk(path):
         for filename in filenames:
             path = os.path.join(root, filename)
 
@@ -147,3 +147,32 @@ def readFiles(path):
             f.close()
             message = '\n'.join(lines)
             yield path, message
+
+
+def dataFrameFromDirectory(path, classification):
+    rows = []
+    index = []
+    for filename, message in readFiles(path):
+        rows.append({'message': message, 'class': classification})
+        index.append(filename)
+
+    return DataFrame(rows, index=index)
+
+data = DataFrame({'message': [], 'class': []})
+
+data = pd.concat([data, dataFrameFromDirectory("C:\ml couse file\MLCourse\emails", "spam")])
+data = pd.concat([data, dataFrameFromDirectory("C:\ml couse file\MLCourse\emails", "ham")])
+
+data.head()
+'''Now we will use a CountVectorizer to split up each message into its list of words, and throw that into a MultinomialNB classifier. Call fit() and we've got a trained spam filter ready to go!'''
+vectorizer = CountVectorizer()
+counts = vectorizer.fit_transform(data['message'].values)
+
+classifier = MultinomialNB()
+targets = data['class'].values
+classifier.fit(counts, targets)
+
+examples = ['Free Viagra now!!!', "Hi Bob, how about a game of golf tomorrow?"]
+example_counts = vectorizer.transform(examples)
+predictions = classifier.predict(example_counts)
+predictions
