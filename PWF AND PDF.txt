@@ -1,0 +1,61 @@
+What is a PMF?
+A Probability Mass Function is a function that gives the probability of each possible value of a discrete random variable.
+
+🧠 In Simple Terms:
+It tells you how likely each outcome is, for things you can count (like number of heads, number of people, etc.).
+
+🎯 For Example (Tossing 2 coins):
+The possible number of heads: 0, 1, or 2.
+
+The PMF gives:
+
+x (Heads)	P(X = x)
+0	0.25
+1	0.50
+2	0.25
+
+This is the PMF — it assigns a probability to each possible number of heads.
+
+🔑 Properties of PMF:
+All probabilities are between 0 and 1
+
+The total of all probabilities equals 1
+
+
+⚠️ PMF vs PDF:
+PMF (Discrete)	PDF (Continuous)
+Tossing coins, rolling dice	Heights, weights, time
+Specific values (e.g., X = 2)	Ranges (e.g., X between 1 and 2)
+binom.pmf(), poisson.pmf()	norm.pdf()
+
+Suppose the average height of students in a class is 170 cm, and most students are close to that height.
+
+We'll use a normal distribution (Gaussian) with:
+
+Mean (μ) = 170 cm
+
+Standard deviation (σ) = 10 cm
+
+This means:
+
+Most students are between 160 and 180 cm
+
+Very few are shorter than 150 cm or taller than 190 cm
+
+❌ Wrong:
+What is the probability that a student is exactly 170 cm?
+Answer: 0  (in continuous distributions, exact values have 0 probability)
+✅ Correct:
+What is the probability that a student is between 160 cm and 180 cm?
+
+📈 What This Shows:
+The curve peaks at 170 → Most students are around 170 cm
+
+The curve gets lower as you go away from 170
+
+The y-axis (PDF value) tells you how dense the probability is at each height
+
+🎓 Final Meaning of PDF:
+A PDF tells us the "density" of probability, not actual probabilities
+
+To get real probabilities, we look at areas under the curve
