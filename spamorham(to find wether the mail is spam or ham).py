@@ -26,10 +26,10 @@ Convert text into numbers
 Keep the meaning or structure useful for classification
 That’s where CountVectorizer comes in — it turns text into numerical feature vectors using the Bag-of-Words model.
 '''
-'''🔁 HOW CountVectorizer WORKS (Step-by-Step)
+''' HOW CountVectorizer WORKS (Step-by-Step)
 Let’s walk through the steps in detail.
 
-⚙️ 1. Build Vocabulary
+ 1. Build Vocabulary
 The first thing CountVectorizer does is build a vocabulary — a list of all unique words across your documents.
 Example:
 Input documents:
@@ -52,7 +52,7 @@ on	5
 sat	6
 the	7
 
-📏 2. Count Word Occurrences (Bag-of-Words)
+ 2. Count Word Occurrences (Bag-of-Words)
 Each document is converted into a vector that counts how often each word appears.
 
 For example:
@@ -80,13 +80,13 @@ That list (vector) can now go into a machine learning model'''
 this is converted to number based on number of occurance'''
 
 from sklearn.naive_bayes import MultinomialNB
-'''📦 How MultinomialNB Works in Practice
-Training: You pass a document-term matrix (from CountVectorizer) and the correct class labels (e.g., 'spam' or 'ham').
+''' How multinomialNB Works in Practice
+Training: You pass a document-term matrix (from CountVectorizer) and the correct class labels (e.g 'spam' or 'ham').
 Model learns:
-How often each word appears in spam and ham
+how often each word appears in spam and ham
 The overall probability of spam and ham emails
-Prediction:
-For a new email, it multiplies the probabilities of the words it contains and chooses the class with the highest probability.'''
+prediction:-
+For a new email it multiplies the probabilities of the words it contains and chooses the class with the highest probability'''
 '''Naive Bayes means a method of classifying things using probabilities based on past data, but with the naive assumption that all features are independent from each other.
 In simple words:
 It looks at your data and calculates how likely each class is.
@@ -94,10 +94,7 @@ It assumes that every feature (like words in a sentence or symptoms in a disease
 Then it picks the class with the highest probability.
 Example:
 If you’re trying to decide whether an email is spam:
-Look at the probability of "free" appearing in spam vs non-spam.
-Do the same for "win", "offer", etc.
-Multiply those probabilities together for each class.
-Choose the class with the higher result
+Look at the probability of "free" appearing in spam vs non-spam.Do the same for "win", "offer", etc.Multiply those probabilities together for each class.Choose the class with the higher result
 
 Example
 We have two classes: Spam and Not Spam
@@ -128,7 +125,7 @@ Step 3: Compare
 Spam: 0.12
 Not Spam: 0.002
 
-✅ The bigger number (0.12) means the email is classified as Spam.
+ The bigger number (0.12) means the email is classified as Spam.
 '''
 
 def readFiles(path):
@@ -176,3 +173,4 @@ examples = ['Free Viagra now!!!', "Hi Bob, how about a game of golf tomorrow?"]
 example_counts = vectorizer.transform(examples)
 predictions = classifier.predict(example_counts)
 predictions
+
